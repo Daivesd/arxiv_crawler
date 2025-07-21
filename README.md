@@ -1,5 +1,4 @@
-# arxiv_majorana_crawler
-For topo only
+# arxiv_crawler
 
 Goal: create & update an arxiv database of relevant papers (based on keywords, authors). If possible the database should be viewable for example via a browser, and it should be possible to notify users (for example via a weekly email) of new entries
 
