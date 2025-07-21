@@ -45,7 +45,7 @@ def sendemail():
     
     
     # try:
-    conn = smtplib.SMTP('smtp.gmail.com', 465) #smtp address and port
+    conn = smtplib.SMTP('smtp.gmail.com', 587) #smtp address and port
     conn.ehlo() #call this to start the connection
     conn.starttls() #starts tls encryption. When we send our password it will be encrypted.
     conn.login('thearxivscraper@gmail.com', 'xopb uted vhjs raeb')
