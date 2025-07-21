@@ -12,6 +12,7 @@ import feedparser
 import pandas as pd
 
 import database_manipulation as dbmanip
+import send_mails as sendmail
 
 
 def _convert_time(val):
@@ -98,6 +99,9 @@ def main():
 
     dbmanip.create_html(updated_db, configs['html_output'])
     print(f"Done writing {configs['html_output']}: ", datetime.now())
+
+    sendmail.sendemail()
+    print(f'Sent email to recipients.')
 
 
 if __name__ == '__main__':
