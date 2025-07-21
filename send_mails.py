@@ -29,7 +29,7 @@ fromaddr = "thearxivscraper@gmail.com"
 Last_week_submissions = open('Last_week_database.html')
 msg = MIMEMultipart()
 msg['From'] = fromaddr
-msg['To'] = 'Topo'
+msg['To'] = 'Me'
 
 msg['Subject'] = "Arxiv submissions last week"
 
