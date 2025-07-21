@@ -48,7 +48,7 @@ def create_html(df, filename):
     csstag.attrs['rel'] = "stylesheet"
     # below: one of these css's will not be found...
     # should modify this to select one css from the right path based on where it's deployed...
-    csstag.attrs['href'] = "/static/table_style.css"
+    #csstag.attrs['href'] = "/static/table_style.css"
     csstag.attrs['href'] = "./table_style.css"
     soup.head.append(csstag)
 
