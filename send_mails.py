@@ -24,21 +24,18 @@ dm.create_html(database_lastweek_df, 'Last_week_database.html')
 
 with open('Adress_list.txt', 'r') as f:
     toAddress = [line.strip() for line in f]
-fromaddr = "Majorana.Arxiv@gmail.com"
+fromaddr = "thearxivscraper@gmail.com"
 
 Last_week_submissions = open('Last_week_database.html')
 msg = MIMEMultipart()
 msg['From'] = fromaddr
 msg['To'] = 'Topo'
 
-msg['Subject'] = "Arxiv Majorana submissions last week"
+msg['Subject'] = "Arxiv submissions last week"
 
-body = '''Dear topo,
+body = '''Hi,
 
-Here is a list of Majorana papers submitted last week. Enjoy reading :)
-
-Regards,
-Majorana.Arxiv
+Testing the email.
 
 ''' 
 
@@ -48,15 +45,15 @@ Message = msg.as_string()
 
 
 # try:
-#conn = smtplib.SMTP('smtp.gmail.com', 587) #smtp address and port
-#conn.ehlo() #call this to start the connection
-#conn.starttls() #starts tls encryption. When we send our password it will be encrypted.
-#conn.login('Majorana.Arxiv@gmail.com', 'Braiding2019')
-#conn.sendmail('Majorana_Arxiv@gmail.com', toAddress, Message)
-#conn.quit()
-#print('Sent notificaton e-mails for the following recipients:\n')
-#for i in range(len(toAddress)):
-#    print(toAddress[i])
+conn = smtplib.SMTP('smtp.gmail.com', 465) #smtp address and port
+conn.ehlo() #call this to start the connection
+conn.starttls() #starts tls encryption. When we send our password it will be encrypted.
+conn.login('thearxivscraper@gmail.com', 'xopb uted vhjs raeb')
+conn.sendmail('thearxivscraper@gmail.com', toAddress, Message)
+conn.quit()
+print('Sent notificaton e-mails for the following recipients:\n')
+for i in range(len(toAddress)):
+    print(toAddress[i])
 # except smtplib.SMTPException:
 #     print('Error: Failed to send mail.')
     
