@@ -20,14 +20,28 @@ def sendemail():
     
     database_lastday_df = database_df.loc[database_df['published'] > (now - delta)]
     
-    dm.create_html(database_lastday_df, 'Last_day_database.html')
+    dm.create_html(database_lastday_df, './Last_day_database.html')
+    print('Last day database created.')
+
+    # Load HTML content
+    with open("Last_day_database.html", "r", encoding="utf-8") as f:
+        html_content = f.read()
+
+    # Load CSS content
+    with open("table_style.css", "r", encoding="utf-8") as f:
+        css_content = f.read()
+
+    injected_html = html_content.replace(
+    "</head>",
+    f"<style>{css_content}</style></head>"
+    )
     
     with open('Adress_list.txt', 'r') as f:
         toAddress = [line.strip() for line in f]
     fromaddr = "thearxivscraper@gmail.com"
     
     Last_day_submissions = open('Last_day_database.html', encoding="utf-8")
-    msg = MIMEMultipart()
+    msg = MIMEMultipart("alternative")
     msg['From'] = fromaddr
     msg['To'] = 'Me'
     
@@ -40,7 +54,7 @@ def sendemail():
     ''' 
     
     msg.attach(MIMEText(body, 'plain'))
-    msg.attach(MIMEText(Last_day_submissions.read(),'html'))
+    msg.attach(MIMEText(injected_html, "html"))
     Message = msg.as_string()
     
     
