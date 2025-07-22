@@ -1,4 +1,0 @@
-beautifulsoup4
-feedparser
-pandas
-html5lib
