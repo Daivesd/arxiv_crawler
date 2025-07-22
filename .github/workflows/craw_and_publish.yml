@@ -2,10 +2,9 @@ name: Run fetch_arxiv.py
 
 on:
   push:
-    branches:
-      - master
+    branches: [master]
   schedule:
-    - cron: '0 12 * * *'
+    - cron: '0 11 * * *'
 
 jobs:
   build:
@@ -19,13 +18,10 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v3
 
-    - name: switch to build branch
+    - name: Configure Git
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "GitHub Actions"
-        git fetch
-        #git checkout build
-        git merge -X theirs master --allow-unrelated-histories
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -43,5 +39,5 @@ jobs:
     - name: Commit and Push Changes
       run: |
         git add -A
-        git commit -m "Auto-generated HTML file"
+        git diff-index --quiet HEAD || git commit -m "Auto-generated HTML file"
         git push origin HEAD
