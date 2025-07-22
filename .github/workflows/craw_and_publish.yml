@@ -18,6 +18,12 @@ jobs:
       with:
         ref: out-pages
 
+    - name: Checkout master branch into `source/`
+      uses: actions/checkout@v3
+      with:
+        ref: master
+        path: source
+
     - name: Set up Git
       run: |
         git config --global user.email "actions@github.com"
@@ -32,7 +38,7 @@ jobs:
       run: pip install -r requirements.txt
 
     - name: Run fetch_arxiv.py to generate HTML
-      run: python fetch_arxiv.py config.json
+      run: python source/fetch_arxiv.py source/config.json
 
     - name: Commit and Push changes
       run: |
