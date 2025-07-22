@@ -15,23 +15,23 @@ def sendemail():
     database_df['published'] = database_df['published'].apply(_convert_time)
         
     now = datetime.datetime.now()
-    delta = datetime.timedelta(days=7)
+    delta = datetime.timedelta(days=1)
     # now - delta
     
-    database_lastweek_df = database_df.loc[database_df['published'] > (now - delta)]
+    database_lastday_df = database_df.loc[database_df['published'] > (now - delta)]
     
-    dm.create_html(database_lastweek_df, 'Last_week_database.html')
+    dm.create_html(database_lastday_df, 'Last_day_database.html')
     
     with open('Adress_list.txt', 'r') as f:
         toAddress = [line.strip() for line in f]
     fromaddr = "thearxivscraper@gmail.com"
     
-    Last_week_submissions = open('Last_week_database.html')
+    Last_day_submissions = open('Last_day_database.html', encoding="utf-8")
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = 'Me'
     
-    msg['Subject'] = "Arxiv submissions last week"
+    msg['Subject'] = "Arxiv submissions last day"
     
     body = '''Hi,
     
@@ -40,7 +40,7 @@ def sendemail():
     ''' 
     
     msg.attach(MIMEText(body, 'plain'))
-    msg.attach(MIMEText(Last_week_submissions.read(),'html'))
+    msg.attach(MIMEText(Last_day_submissions.read(),'html'))
     Message = msg.as_string()
     
     
