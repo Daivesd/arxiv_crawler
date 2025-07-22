@@ -1,0 +1,45 @@
+/* https://www.w3schools.com/css/tryit.asp?filename=trycss_table_fancy */
+body {
+    font-family: "Seravek", -apple-system, BlinkMacSystemFont, Ubuntu, "Source Sans Pro", "Myriad Pro", "Segoe UI", Roboto, 'Open Sans', 'Helvetica Neue', "Trebuchet MS", sans-serif;
+}
+table {
+	font-size: 18px;
+    border-collapse: collapse;
+    width: 100%;
+}
+  
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+body {
+	background-color: #252627;
+	color: #ddd;
+}
+
+tr:nth-child(even){background-color: #2b2e2f;}
+
+tr:hover {background-color: #373b3d;}
+
+a {color: #88C1D0;}
+a:visited {color: #A3BE8C;}
+
+td, th {
+  border: 1px solid #333;
+  padding: 8px;
+}
+}
