@@ -35,7 +35,7 @@ def sendemail():
     
     body = '''Hi,
     
-    Testing the email.
+    arXiv submission from last day attached.
     
     ''' 
     
