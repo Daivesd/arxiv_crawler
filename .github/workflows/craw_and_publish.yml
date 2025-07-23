@@ -6,8 +6,12 @@ on:
     branches:
       - master
   schedule:
-    - cron: '01 7 * * *'
+    - cron: "17 5 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
 
 jobs:
   build:
