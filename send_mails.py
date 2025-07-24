@@ -15,7 +15,7 @@ def sendemail():
     database_df['published'] = database_df['published'].apply(_convert_time)
         
     now = datetime.datetime.now()
-    delta = datetime.timedelta(days=1.2)
+    delta = datetime.timedelta(days=1.3)
     # now - delta
     
     database_lastday_df = database_df.loc[database_df['published'] > (now - delta)]
