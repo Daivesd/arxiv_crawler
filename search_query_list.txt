@@ -12,7 +12,9 @@ all:josephson+AND+cat:cond-mat.supr-con
 all:triplet+superconductivity+AND+cat:cond-mat.supr-con
 all:triplet+superconductivity+AND+cat:cond-mat.mes-hall
 all:cryogenic+memory+AND+cat:cond-mat.supr-con
+all:cryogenic+memory+AND+cat:cond-mat.mes-hall
 all:superconducting+logic+AND+cat:cond-mat.supr-con
+all:superconducting+logic+AND+cat:cond-mat.mes-hall
 au:stuart+parkin+AND+cat:cond-mat.mes-hall
 au:stuart+parkin+AND+cat:cond-mat.supr-con
 au:anna+herr+AND+cat:cond-mat.mes-hall
