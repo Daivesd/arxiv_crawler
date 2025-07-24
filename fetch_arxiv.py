@@ -58,6 +58,7 @@ def query_arxiv_org(query_input):
             dic_stored['arxiv_primary_category'] = entry.arxiv_primary_category['term']
             dic_stored['published'] = _convert_time(entry.published)
             dic_stored['link'] = entry.link
+            dic_stored['keyword'] = query
             result_list.append(dic_stored)
 
     return result_list
