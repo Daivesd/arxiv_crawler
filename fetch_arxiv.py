@@ -58,6 +58,10 @@ def query_arxiv_org(query_input):
         d = feedparser.parse(base_url+query+sorting_order) # actual querying
 
         for entry in d.entries:
+
+            if entry.arxiv_primary_category['term'] not in ['cond-mat.supr-con', 'cond-mat.mes-hall']:
+                continue # skip, it's a secondary category
+            
             dic_stored = {}
             dic_stored['id'] = entry.id.split('/')[-1].split('v')[0]
             dic_stored['author_list'] = _join_authors(entry.authors)
