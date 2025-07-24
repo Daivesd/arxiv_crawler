@@ -6,6 +6,7 @@ add -d for debugging (log beginning of each stage)
 import json
 import os
 import sys
+import re
 from datetime import datetime
 
 import feedparser
@@ -48,6 +49,12 @@ def query_arxiv_org(query_input):
     for search_query in search_keywords:
         query = f'search_query={search_query.rstrip()}&start={start}&max_results={max_results}'
 
+        match = re.search(r'^(all|au):(.+?)\+AND', search_query)
+        if match:
+            keyword_string = match.group(2).replace("+", " ")
+        else:
+            keyword_string = "unknown"  # fallback in case of unexpected format
+        
         d = feedparser.parse(base_url+query+sorting_order) # actual querying
 
         for entry in d.entries:
@@ -58,7 +65,7 @@ def query_arxiv_org(query_input):
             dic_stored['arxiv_primary_category'] = entry.arxiv_primary_category['term']
             dic_stored['published'] = _convert_time(entry.published)
             dic_stored['link'] = entry.link
-            dic_stored['keyword'] = query
+            dic_stored['keyword'] = keyword_string
             result_list.append(dic_stored)
 
     return result_list
