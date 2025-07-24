@@ -1,8 +1,8 @@
 name: Debug Cron
 
 on:
-  schedule:
-    - cron: "*/5 * * * *"  # every 5 minutes for testing
+  #schedule:
+  #  - cron: "*/5 * * * *"  # every 5 minutes for testing
   workflow_dispatch:
 
 permissions:
