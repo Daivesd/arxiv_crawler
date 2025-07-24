@@ -49,7 +49,7 @@ def query_arxiv_org(query_input):
     for search_query in search_keywords:
         query = f'search_query={search_query.rstrip()}&start={start}&max_results={max_results}'
 
-        match = re.search(r'^(cat|au):(.+?)\+AND', search_query)
+        match = re.search(r'^(all|au):(.+?)\+AND', search_query)
         if match:
             keyword_string = match.group(2).replace("+", " ")
         else:
