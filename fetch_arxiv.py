@@ -112,8 +112,8 @@ def main():
     dbmanip.create_html(updated_db, configs['html_output'])
     print(f"Done writing {configs['html_output']}: ", datetime.now())
 
-    sendmail.sendemail()
-    print(f'Sent email to recipients.')
+    #sendmail.sendemail()
+    #print(f'Sent email to recipients.')
 
 
 if __name__ == '__main__':
