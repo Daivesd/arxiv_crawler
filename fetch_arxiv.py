@@ -59,7 +59,7 @@ def query_arxiv_org(query_input):
 
         for entry in d.entries:
 
-            if entry.arxiv_primary_category['term'] not in ['cond-mat.supr-con', 'cond-mat.mes-hall', 'cond-mat.mtrl-sci']:
+            if entry.arxiv_primary_category['term'] not in ['cond-mat.supr-con', 'cond-mat.mes-hall', 'cond-mat.mtrl-sci', 'quant-ph']:
                 continue # skip, it's a secondary category
             
             dic_stored = {}
