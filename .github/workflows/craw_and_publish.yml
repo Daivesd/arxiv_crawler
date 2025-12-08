@@ -36,15 +36,15 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.x  # Choose the version you need
+        python-version: 3.x  
 
     - name: Install Dependencies 
       run: |
-        pip install -r requirements.txt  # If you have any dependencies
+        pip install -r requirements.txt 
 
     - name: Run Python Script
       run: |
-        python fetch_arxiv.py config.json  # Replace with the actual name of your Python script
+        python fetch_arxiv.py config.json 
 
     - name: Commit and Push Changes
       run: |
