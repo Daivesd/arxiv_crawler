@@ -57,11 +57,13 @@ def query_arxiv_org(query_input):
         
         d = feedparser.parse(base_url+query+sorting_order) # actual querying
 
+                
         for entry in d.entries:
-
-            if entry.arxiv_primary_category['term'] not in ['cond-mat.supr-con', 'cond-mat.mes-hall', 'cond-mat.mtrl-sci', 'quant-ph']:
+            # Defensive: Skip entries missing arxiv_primary_category
+            primary_cat = getattr(entry, 'arxiv_primary_category', None)
+            if not primary_cat or primary_cat.get('term') not in ['cond-mat.supr-con', 'cond-mat.mes-hall', 'cond-mat.mtrl-sci', 'quant-ph']:
                 continue # skip, it's a secondary category
-            
+                    
             dic_stored = {}
             dic_stored['id'] = entry.id.split('/')[-1].split('v')[0]
             dic_stored['author_list'] = _join_authors(entry.authors)
