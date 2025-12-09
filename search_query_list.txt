@@ -1,12 +1,34 @@
-all:"spin qubit"
-all:"cryoCMOS"
-all:"Pauli spin blockade"
-all:"spin readout"
-all:"neutral atoms"
-all:"trapped ions"
-all:"superconducting qubit"
+all:"spin qubit"+AND+cat:cond-mat.supr-con
+all:"spin qubit"+AND+cat:cond-mat.mes-hall
+all:"spin qubit"+AND+cat:quant-ph
+
+all:"cryoCMOS"+AND+cat:cond-mat.supr-con
+all:"cryoCMOS"+AND+cat:cond-mat.mes-hall
+all:"cryoCMOS"+AND+cat:quant-ph
+
+all:"Pauli spin blockade"+AND+cat:cond-mat.supr-con
+all:"Pauli spin blockade"+AND+cat:cond-mat.mes-hall
+all:"Pauli spin blockade"+AND+cat:quant-ph
+
+all:"spin readout"+AND+cat:cond-mat.supr-con
+all:"spin readout"+AND+cat:cond-mat.mes-hall
+all:"spin readout"+AND+cat:quant-ph
+
+all:"neutral atoms"+AND+cat:cond-mat.supr-con
+all:"neutral atoms"+AND+cat:cond-mat.mes-hall
+all:"neutral atoms"+AND+cat:quant-ph
+
+all:"trapped ions"+AND+cat:cond-mat.supr-con
+all:"trapped ions"+AND+cat:cond-mat.mes-hall
+all:"trapped ions"+AND+cat:quant-ph
+
+all:"superconducting qubit"+AND+cat:cond-mat.supr-con
+all:"superconducting qubit"+AND+cat:cond-mat.mes-hall
+all:"superconducting qubit"+AND+cat:quant-ph
 
 #------------------------------------------------------------------#
 
 #all:"transmon"+AND+cat:cond-mat.supr-con
 #all:"transmon"+AND+cat:cond-mat.mes-hall
+#all:"transmon"+AND+cat:quant-ph
+
