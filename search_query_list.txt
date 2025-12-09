@@ -1,13 +1,10 @@
-all:"spin qubit"+AND+cat:cond-mat.mes-hall
-all:"spin qubit"+AND+cat:quant-ph
+all:"spin qubit"
 all:"cryoCMOS"
-all:"Pauli spin blockade"+AND+cat:cond-mat.mes-hall
-all:"Pauli spin blockade"+AND+cat:quant-ph
-all:"spin readout"+AND+cat:cond-mat.mes-hall
-all:"spin readout"+AND+cat:quant-ph
-all:"neutral atom"+AND+cat:cond-mat.mes-hall
-all:"superconducting qubit"+AND+cat:cond-mat.supr-con
-all:"superconducting qubit"+AND+cat:cond-mat.mes-hall
+all:"Pauli spin blockade"
+all:"spin readout"
+all:"neutral atoms"
+all:"trapped ions"
+all:"superconducting qubit"
 
 #------------------------------------------------------------------#
 
