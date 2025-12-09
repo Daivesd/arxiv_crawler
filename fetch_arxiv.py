@@ -37,7 +37,7 @@ def query_arxiv_org(query_input):
     base_url = 'https://export.arxiv.org/api/query?'
     # each search item
     with open(query_input) as file:
-        search_keywords = file.readlines()
+        search_keywords = [line.strip() for line in file if line.strip() and not line.strip().startswith("#")]
     # some options
     start = 0
     max_results = 50 # see arXiv API for max result limits
@@ -48,7 +48,6 @@ def query_arxiv_org(query_input):
     # search for the keywords/authors one by one
     for search_query in search_keywords:
         query = f'search_query={search_query.rstrip()}&start={start}&max_results={max_results}'
-
         match = re.search(r'^(all|au):(.+?)\+AND', search_query)
         if match:
             keyword_string = match.group(2).replace("+", " ")
@@ -57,12 +56,14 @@ def query_arxiv_org(query_input):
         
         d = feedparser.parse(base_url+query+sorting_order) # actual querying
 
+        cat_match = re.search(r'cat:([\w\.-]+)', search_query)
+        query_category = cat_match.group(1) if cat_match else None
                 
         for entry in d.entries:
             # Defensive: Skip entries missing arxiv_primary_category
             primary_cat = getattr(entry, 'arxiv_primary_category', None)
-            if not primary_cat or primary_cat.get('term') not in ['cond-mat.supr-con', 'cond-mat.mes-hall', 'cond-mat.mtrl-sci', 'quant-ph']:
-                continue # skip, it's a secondary category
+            if not primary_cat or (query_category and primary_cat.get('term') != query_category):
+                continue
                     
             dic_stored = {}
             dic_stored['id'] = entry.id.split('/')[-1].split('v')[0]
