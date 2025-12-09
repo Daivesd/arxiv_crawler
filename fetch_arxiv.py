@@ -11,6 +11,7 @@ from datetime import datetime
 
 import feedparser
 import pandas as pd
+from urllib.parse import quote_plus
 
 import database_manipulation as dbmanip
 import send_mails as sendmail
@@ -47,8 +48,10 @@ def query_arxiv_org(query_input):
 
     # search for the keywords/authors one by one
     for search_query in search_keywords:
-        query = f'search_query={search_query.rstrip()}&start={start}&max_results={max_results}'
-        match = re.search(r'^(all|au):(.+?)\+AND', search_query)
+        encoded_query = quote_plus(search_query.rstrip())
+        query = f'search_query={encoded_query}&start={start}&max_results={max_results}'
+        match = re.search(r'^(all|au):"([^"]+)"', search_query)
+        keyword_string = match.group(2) if match else "unknown"
         if match:
             keyword_string = match.group(2).replace("+", " ")
         else:
